@@ -5,7 +5,6 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Scanner input = new Scanner(System.in);
-		Scanner inputtext = new Scanner(System.in);
 		
 		System.out.println("Welcome to the Chick Meter !!!\n");
 		
@@ -18,19 +17,18 @@ public class Main {
 		System.out.println("Enter waist (cm): ");
 		double waist = input.nextDouble();
 		
-		System.out.println("Enter booty squishyness (0-5): ");
-		byte aSquish = input.nextByte();
+		System.out.println("Enter hip (cm): ");
+		double hips = input.nextDouble();
 		
-		System.out.println("Enter cup size: ");
-		String boobs = inputtext.nextLine();
+		System.out.println("Enter bust (cm): ");
+		double bust = input.nextDouble();
 		
-		Chick c = new Chick(height, weight, waist, aSquish, boobs);
+		Chick c = new Chick(height, weight, waist, hips, bust);
 		
 		c.calcGrade();
 		System.out.println("Points: " + c.getPoints());
 		
 		input.close();
-		inputtext.close();
 	}
 	
 }
