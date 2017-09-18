@@ -1,20 +1,22 @@
 
-public class Chick extends GValues {
+public class Chick {
 	
 	private double height;
 	private double weight;
 	private double waist;
-	private byte aSquish;
-	private String boobs;
-	private byte points;
+	private double bust;
+	private double hips;
 	
-	public Chick(double height, double weight, double waist, byte aSquish, String boobs) {
+	private byte points;
+	private GValues gV = new GValues();
+	
+	public Chick(double height, double weight, double waist, double bust, double hips) {
 		
 		this.height = height;
 		this.weight = weight;
 		this.waist = waist;
-		this.aSquish = aSquish;
-		this.boobs = boobs;
+		this.bust = bust;
+		this.hips = hips;
 	}
 	
 	public double getHeight() {
@@ -29,12 +31,12 @@ public class Chick extends GValues {
 		return waist;
 	}
 	
-	public byte getASquish() {
-		return aSquish;
+	public double getBust() {
+		return bust;
 	}
 	
-	public String getBoobs() {
-		return boobs;
+	public double getHips() {
+		return hips;
 	}
 	
 	public byte getPoints() {
@@ -43,94 +45,102 @@ public class Chick extends GValues {
 	
 	public void calcH() {
 		
-		if ( (height <= getGHeight() + 0.05) && (height >= getGHeight() - 0.05) ) {
+		if (Math.abs(gV.getGHeight() - height) <= 0.10) {
 			
-			if( height == getGHeight() )
+			if (height == gV.getGHeight()) {
 				points += 5;
-			
-			else if( (height <= getGHeight() + 0.02) && (height >= getGHeight() - 0.02) )
+			} else if (Math.abs(gV.getGHeight() - height) <= 0.2) {
+				points += 4;
+			} else if (Math.abs(gV.getGHeight() - height) <= 0.4) {
+				points += 3;
+			} else if (Math.abs(gV.getGHeight() - height) <= 0.6) {
 				points += 2;
-			
-			else
+			} else {
 				points++;
-		}
-		else {
-			points--;
+			}
+			
 		}
 		
 	}
 	
 	public void calcWe() {
 		
-		if ( (weight <= getGWeight() + 10) && (weight >= getGWeight() - 10) ) {
+		if (Math.abs(gV.getGWeight() - weight) <= 10) {
 			
-			if( weight == getGWeight() )
+			if (weight == gV.getGWeight()) {
 				points += 5;
-			
-			else if( (weight <= getGWeight() + 5) && (weight >= getGWeight() - 5) )
+			} else if (Math.abs(gV.getGWeight() - weight) <= 2) {
+				points += 4;
+			} else if (Math.abs(gV.getGWeight() - weight) <= 4) {
+				points += 3;
+			} else if (Math.abs(gV.getGWeight() - weight) <= 6) {
 				points += 2;
-			
-			else
+			} else {
 				points++;
-		}
-		else {
-			points--;
+			}
+			
 		}
 		
 	}
 	
 	public void calcWa() {
 		
-		if ( (waist <= getGWaist() + 5) && (waist >= getGWaist() - 5) ) {
+		if (Math.abs(gV.getGWaist() - waist) <= 10) {
 			
-			if( waist == getGWaist() )
+			if (height == gV.getGWaist()) {
 				points += 5;
-			
-			else if( (waist <= getGWaist() + 2) && (waist >= getGWaist() - 2) )
+			} else if (Math.abs(gV.getGWaist() - waist) <= 2) {
+				points += 4;
+			} else if (Math.abs(gV.getGWaist() - waist) <= 4) {
+				points += 3;
+			} else if (Math.abs(gV.getGWaist() - waist) <= 6) {
 				points += 2;
-			
-			else
+			} else {
 				points++;
-		}
-		else {
-			points--;
+			}
+			
 		}
 		
 	}
 	
-	public void calcASquish() {
+	public void calcBust() {
 		
-		if ( (aSquish <= getGASquish() + 2) && (aSquish >= getGASquish() - 3) ) {
+		if (Math.abs(gV.getGBust() - bust) <= 10) {
 			
-			if( aSquish == getGASquish() )
+			if (height == gV.getGBust()) {
 				points += 5;
-			
-			else if( (aSquish <= getGASquish() + 1) && (aSquish >= getGASquish() - 1) )
+			} else if (Math.abs(gV.getGBust() - bust) <= 2) {
+				points += 4;
+			} else if (Math.abs(gV.getGBust() - bust) <= 4) {
+				points += 3;
+			} else if (Math.abs(gV.getGBust() - bust) <= 6) {
 				points += 2;
-			
-			else
+			} else {
 				points++;
-		}
-		else {
-			points--;
+			}
+			
 		}
 		
 	}
 	
-	public void calcBoobs() {
+	public void calcHips() {
 		
-		if (boobs.equals("32c")) {
-			points += 5;
+		if (Math.abs(gV.getGHips() - hips) <= 10) {
+			
+			if (height == gV.getGHips()) {
+				points += 5;
+			} else if (Math.abs(gV.getGHips() - hips) <= 2) {
+				points += 4;
+			} else if (Math.abs(gV.getGHips() - hips) <= 4) {
+				points += 3;
+			} else if (Math.abs(gV.getGHips() - hips) <= 6) {
+				points += 2;
+			} else {
+				points++;
+			}
+			
 		}
-		else if (boobs.equals("32d")) {
-			points += 2;
-		}
-		else if (boobs.equals("32e")) {
-			points += 1;
-		}
-		else {
-			points -= 1;
-		}
+		
 	}
 	
 	public void calcGrade() {
@@ -138,30 +148,30 @@ public class Chick extends GValues {
 		calcH();
 		calcWe();
 		calcWa();
-		calcASquish();
-		calcBoobs();
+		calcBust();
+		calcHips();
 		
-		if (points >= 20) {
+		if (points >= 21) {
 			System.out.println("Score: A");
 		}
 		
-		else if ( (points >= 15) && (points < 20) ) {
+		else if ((points >= 17) && (points < 21)) {
 			System.out.println("Score: B");
 		}
 		
-		else if ( (points >= 10) && (points < 15) ) {
+		else if ((points >= 13) && (points < 17)) {
 			System.out.println("Score: C");
 		}
 		
-		else if ( (points >= 5) && (points < 10) ) {
+		else if ((points >= 9) && (points < 13)) {
 			System.out.println("Score: D");
 		}
 		
-		else if ( (points >= 0) && (points < 5) ) {
+		else if ((points >= 5) && (points < 9)) {
 			System.out.println("Score: E");
 		}
 		
-		else {
+		else if (points < 5) {
 			System.out.println("Score: F");
 		}
 	}
