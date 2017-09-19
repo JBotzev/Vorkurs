@@ -40,7 +40,6 @@ public class Main {
 		System.out.print("Enter waist (cm): ");
 		double waist = input.nextDouble();
 		
-<<<<<<< HEAD
 		System.out.print("Enter bust (cm): ");
 		double bust = input.nextDouble();
 		
@@ -49,15 +48,6 @@ public class Main {
 		
 		GValues gV = new GValues(gHeight, gWeight, gWaist, gBust, gHips);
 		Chick c = new Chick(height, weight, waist, bust, hips);
-=======
-		System.out.println("Enter hip (cm): ");
-		double hips = input.nextDouble();
-		
-		System.out.println("Enter bust (cm): ");
-		double bust = input.nextDouble();
-		
-		Chick c = new Chick(height, weight, waist, hips, bust);
->>>>>>> origin/master
 		
 		c.calcGrade();
 		System.out.println("Points: " + c.getPoints());
